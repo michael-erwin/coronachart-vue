@@ -39,7 +39,7 @@
     </div>
     <v-container>
       <!-- Single Stats -->
-      <v-row>
+      <v-row class="stat-widget">
         <v-col cols="12" sm="6" lg="3">
           <v-card class="single-stat">
             <v-card class="card-icon" color="info">
@@ -441,6 +441,14 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+}
+.stat-widget {
+  position: relative;
+  .embed-btn {
+    position: absolute;
+    right: 12px;
+    top: 0;
   }
 }
 </style>

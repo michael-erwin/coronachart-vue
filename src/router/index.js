@@ -1,27 +1,40 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
+// Main Pages
 import NotFound from '@/views/NotFound.vue'
 import Home from '@/views/Home.vue'
-import Stats from '@/views/Stats.vue'
-import TotalWorld from '@/views/TotalWorld.vue'
+import Catalogue from '@/views/Catalogue.vue'
+
+// Embed Contents.
+import EmbedSummaryWidget from '@/views/embeds/SummaryWidget.vue'
+
+// Catalog Contents.
+import CatalogueSummaryWidgetsPage from '@/views/catalogue-contents/SummaryWidgetsPage.vue'
+import CatalogueSummaryChartsPage from '@/views/catalogue-contents/SummaryChartsPage.vue'
+import CatalogueTimeSeriesChartsPage from '@/views/catalogue-contents/TimeSeriesChartsPage.vue'
+import CatalogueDataTablesPage from '@/views/catalogue-contents/DataTablesPage.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
     component: Home,
   },
   {
-    path: '/summary/world',
-    name: 'TotalWorld',
-    component: TotalWorld
+    path: '/catalogue',
+    component: Catalogue,
+    children: [
+      { path: 'summary-widgets', component: CatalogueSummaryWidgetsPage, alias: '/' },
+      { path: 'summary-charts', component: CatalogueSummaryChartsPage },
+      { path: 'time-series-charts', component: CatalogueTimeSeriesChartsPage },
+      { path: 'data-tables', component: CatalogueDataTablesPage },
+    ]
   },
   {
-    path: '/stats/:code([a-z]{2})',
-    name: 'Stats',
-    component: Stats
+    path: '/embeds/summary-widget',
+    component: EmbedSummaryWidget,
   },
   {
     path: '*',

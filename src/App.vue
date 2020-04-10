@@ -33,4 +33,23 @@ html, body {
     height: 400px;
   }
 }
+/* Scrollbar style */
+*::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #c0c0c0;
+}
+*::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #c0c0c0;
+}
+*::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 1px 1px 1px rgba(0,0,0,.3);
+	background-color: #ffffff;
+  cursor: pointer;
+}
 </style>
