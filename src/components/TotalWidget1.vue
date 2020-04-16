@@ -1,59 +1,59 @@
 <template>
   <v-container fluid>
     <v-row>
-      <v-col cols="12" sm="6" lg="3">
+      <v-col cols="12" sm="6" md="3">
         <v-card class="single-stat">
           <v-card class="card-icon" color="info">
             <v-icon large color="white">mdi-account-multiple-plus</v-icon>
           </v-card>
           <div class="total-label">
-            {{titles[type].confirmed}}
+            {{titles[timespan].confirmed}}
           </div>
           <div class="total">
             <v-progress-circular v-if="loading" class="mb-4" color="grey" indeterminate />
-            <h1 v-else class="display-2">{{confirmed|thousandSeparator}}</h1>
+            <h1 v-else class="numbers">{{confirmed|thousandSeparator}}</h1>
           </div>
         </v-card>
       </v-col>
-      <v-col cols="12" sm="6" lg="3">
+      <v-col cols="12" sm="6" md="3">
         <v-card class="single-stat">
           <v-card class="card-icon" color="red darken-1">
             <v-icon large color="white">mdi-account-multiple-minus</v-icon>
           </v-card>
           <div class="total-label">
-            {{titles[type].deaths}}
+            {{titles[timespan].deaths}}
           </div>
           <div class="total">
             <v-progress-circular v-if="loading" class="mb-4" color="grey" indeterminate />
-            <h1 v-else class="display-2">{{deaths|thousandSeparator}}</h1>
+            <h1 v-else class="numbers">{{deaths|thousandSeparator}}</h1>
           </div>
         </v-card>
       </v-col>
-      <v-col cols="12" sm="6" lg="3">
+      <v-col cols="12" sm="6" md="3">
         <v-card class="single-stat">
           <v-card class="card-icon" color="success">
             <v-icon large color="white">mdi-account-multiple-check</v-icon>
           </v-card>
           <div class="total-label">
-            {{titles[type].recovered}}
+            {{titles[timespan].recovered}}
           </div>
           <div class="total">
             <v-progress-circular v-if="loading" class="mb-4" color="grey" indeterminate />
-            <h1 v-else class="display-2">{{recovered|thousandSeparator}}</h1>
+            <h1 v-else class="numbers">{{recovered|thousandSeparator}}</h1>
           </div>
         </v-card>
       </v-col>
-      <v-col cols="12" sm="6" lg="3">
+      <v-col cols="12" sm="6" md="3">
         <v-card class="single-stat">
           <v-card class="card-icon" color="orange darken-1">
             <v-icon large color="white">mdi-account-multiple</v-icon>
           </v-card>
           <div class="total-label">
-            {{titles[type].active}}
+            {{titles[timespan].active}}
           </div>
           <div class="total">
             <v-progress-circular v-if="loading" class="mb-4" color="grey" indeterminate />
-            <h1 v-else class="display-2">{{active|thousandSeparator}}</h1>
+            <h1 v-else class="numbers">{{active|thousandSeparator}}</h1>
           </div>
         </v-card>
       </v-col>
@@ -66,6 +66,10 @@ import Formatters from '@/mixins/Formatters'
 export default {
   data () {
     return {
+      confirmed: 0,
+      deaths: 0,
+      recovered: 0,
+      active: 0,
       titles: {
         cummulative: {
           confirmed: 'Total Confirmed',
@@ -85,11 +89,22 @@ export default {
   mixins: [ Formatters ],
   props: {
     loading: { type: Boolean, default: false },
-    confirmed: { type: Number, default: 0 },
-    deaths: { type: Number, default: 0 },
-    recovered: { type: Number, default: 0 },
-    active: { type: Number, default: 0 },
-    type: { type: String, default: 'cummulative' },
+    data: Object,
+    timespan: { type: String, default: 'cummulative' },
+  },
+  watch: {
+    data (data) {
+      this.confirmed = this.timespan == 'new' ? data.new_confirmed : data.total_confirmed
+      this.deaths = this.timespan == 'new' ? data.new_deaths : data.total_deaths
+      this.recovered = this.timespan == 'new' ? data.new_recovered : data.total_recovered
+      this.active = this.timespan == 'new' ? data.new_active : data.total_active
+    },
+    timespan () {
+      this.confirmed = this.timespan == 'new' ? this.data.new_confirmed : this.data.total_confirmed
+      this.deaths = this.timespan == 'new' ? this.data.new_deaths : this.data.total_deaths
+      this.recovered = this.timespan == 'new' ? this.data.new_recovered : this.data.total_recovered
+      this.active = this.timespan == 'new' ? this.data.new_active : this.data.total_active
+    }
   }
 }
 </script>
@@ -116,6 +131,19 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .numbers {
+    white-space: nowrap;
+    font-size: 3vw;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: normal;
+    font-family: "Roboto", sans-serif;
+  }
+  @media (max-width: 960px) {
+    .numbers {
+      font-size: 6vw;
+    }
   }
 }
 </style>

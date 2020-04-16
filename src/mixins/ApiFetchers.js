@@ -2,60 +2,53 @@ export default {
   data () {
     return {
       domain: process.env.VUE_APP_URL,
-      world_stats_loading: false,
-      world_confirmed: 0,
-      world_deaths: 0,
-      world_recovered: 0,
-      world_active: 0,
-      world_new_confirmed: 0,
-      world_new_deaths: 0,
-      world_new_recovered: 0,
-      world_new_active: 0,
-      country_stats_loading: false,
-      country_confirmed: 0,
-      country_deaths: 0,
-      country_recovered: 0,
-      country_active: 0,
-      country_new_confirmed: 0,
-      country_new_deaths: 0,
-      country_new_recovered: 0,
-      country_new_active: 0,
+      // v2/covid-stats/world
+      world_summary: {},
+      world_summary_loading: false,
+      // v2/covid-stats/countries/${country_code}
+      country_summary: {},
+      country_summary_loading: false,
+      // v2/covid-stats/countries/${country_code}?span=past
+      country_series: {},
+      country_series_loading: false,
+      // v2/covid-stats/countries?type=count
+      countries_count: {}, 
+      countries_count_loading: false,
+      // v2/covid-stats/countries?type=density
+      countries_density: {}, 
+      countries_density_loading: false,
     }
   },
   methods: {
     fetchCountryStats (country_code='us', type='advanced') {
-      this.country_stats_loading = true
+      this.country_summary_loading = true
       const params = { type }
-      this.$axios.get(`${this.domain}/v2/covid-stats/total/${country_code}`, { params })
+      this.$axios.get(`${this.domain}/v2/covid-stats/countries/${country_code}`, { params })
       .then((response) => {
-        const data = response.data
-        this.country_confirmed = data.total_confirmed ? data.total_confirmed : 0
-        this.country_deaths = data.total_deaths ? data.total_deaths : 0
-        this.country_recovered = data.total_recovered ? data.total_recovered : 0
-        this.country_active = data.total_active ? data.total_active : 0
-        this.country_new_confirmed = data.new_confirmed ? data.new_confirmed : 0
-        this.country_new_deaths = data.new_deaths ? data.new_deaths : 0
-        this.country_new_recovered = data.new_recovered ? data.new_recovered : 0
-        this.country_new_active = data.new_active ? data.new_active : 0
-        this.country_stats_loading = false
+        this.country_summary = response.data
+        this.country_summary_loading = false
+      })
+      .catch((e) => { console.error(e) })
+    },
+    fetchCountriesStats (type='count') {
+      const data_placeholder = `countries_${type}`
+      const loading_ref = `countries_${type}_loading`
+      const params = { type }
+      this[loading_ref] = true
+      this.$axios.get(`${this.domain}/v2/covid-stats/countries`, { params })
+      .then((response) => {
+        this[data_placeholder] = response.data
+        this[loading_ref] = false
       })
       .catch((e) => { console.error(e) })
     },
     fetchWorldStats (type='advanced') {
-      this.world_stats_loading = true
+      this.world_summary_loading = true
       const params = { type }
-      this.$axios.get(`${this.domain}/v2/covid-stats/total`, { params })
+      this.$axios.get(`${this.domain}/v2/covid-stats/world`, { params })
       .then((response) => {
-        const data = response.data
-        this.world_confirmed = data.total_confirmed ? data.total_confirmed : 0
-        this.world_deaths = data.total_deaths ? data.total_deaths : 0
-        this.world_recovered = data.total_recovered ? data.total_recovered : 0
-        this.world_active = data.total_active ? data.total_active : 0
-        this.world_new_confirmed = data.new_confirmed ? data.new_confirmed : 0
-        this.world_new_deaths = data.new_deaths ? data.new_deaths : 0
-        this.world_new_recovered = data.new_recovered ? data.new_recovered : 0
-        this.world_new_active = data.new_active ? data.new_active : 0
-        this.world_stats_loading = false
+        this.world_summary = response.data
+        this.world_summary_loading = false
       })
       .catch((e) => { console.error(e) })
     },

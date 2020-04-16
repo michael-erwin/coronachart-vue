@@ -4,11 +4,11 @@
     <v-navigation-drawer v-model="drawer" app dark>
       <!-- Nav > Logo -->
       <v-toolbar elevation="1">
-        <v-icon class="mx-2" color="orange">
+        <v-icon class="mx-2 green--text text--accent-3">
           mdi-bacteria-outline
         </v-icon>
         <v-toolbar-title class="mr-12 align-center">
-          <span class="title">COVID <span class="orange--text">Charts</span></span>
+          <span class="title">COVID <span class="green--text text--accent-3">Charts</span></span>
         </v-toolbar-title>
       </v-toolbar>
       <!-- Nav > Links -->

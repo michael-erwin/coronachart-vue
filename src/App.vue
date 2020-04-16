@@ -21,6 +21,7 @@ html, body {
 }
 .switch-chart .chart-box {
   height: 480px;
+  overflow: hidden !important;
 }
 .topbar {
   position: sticky;
@@ -50,6 +51,6 @@ html, body {
 	border-radius: 10px;
 	-webkit-box-shadow: inset 1px 1px 1px rgba(0,0,0,.3);
 	background-color: #ffffff;
-  cursor: pointer;
+  cursor: pointer !important;
 }
 </style>

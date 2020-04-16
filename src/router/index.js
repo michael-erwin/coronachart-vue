@@ -3,11 +3,14 @@ import VueRouter from 'vue-router'
 
 // Main Pages
 import NotFound from '@/views/NotFound.vue'
-import Home from '@/views/Home.vue'
+import Index from '@/views/Index.vue'
 import Catalogue from '@/views/Catalogue.vue'
 
 // Embed Contents.
-import EmbedSummaryWidget from '@/views/embeds/SummaryWidget.vue'
+import EmbedSummaryWidget1 from '@/views/embeds/SummaryWidget1.vue'
+import EmbedSummaryChart1 from '@/views/embeds/SummaryChart1.vue'
+import EmbedSummaryChart2 from '@/views/embeds/SummaryChart2.vue'
+import EmbedSummaryChart3 from '@/views/embeds/SummaryChart3.vue'
 
 // Catalog Contents.
 import CatalogueSummaryWidgetsPage from '@/views/catalogue-contents/SummaryWidgetsPage.vue'
@@ -20,7 +23,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    component: Home,
+    component: Index,
   },
   {
     path: '/catalogue',
@@ -33,8 +36,20 @@ const routes = [
     ]
   },
   {
-    path: '/embeds/summary-widget',
-    component: EmbedSummaryWidget,
+    path: '/embeds/summary-widget-1',
+    component: EmbedSummaryWidget1,
+  },
+  {
+    path: '/embeds/summary-chart-1',
+    component: EmbedSummaryChart1,
+  },
+  {
+    path: '/embeds/summary-chart-2',
+    component: EmbedSummaryChart2,
+  },
+  {
+    path: '/embeds/summary-chart-3',
+    component: EmbedSummaryChart3,
   },
   {
     path: '*',
