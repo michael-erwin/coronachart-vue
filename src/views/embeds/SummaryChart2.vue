@@ -11,9 +11,6 @@ import TotalPieChart1 from '@/components/TotalPieChart1'
 export default {
   components: { TotalPieChart1 },
   computed: {
-    isInsideFrame () {
-      return window.self !== window.top
-    },
     countries_data () {
       return this.data_type == 'count' ? this.countries_count : this.countries_density
     },

@@ -11,9 +11,6 @@ import TotalMixChart1 from '@/components/TotalMixChart1'
 export default {
   components: { TotalMixChart1 },
   computed: {
-    isInsideFrame () {
-      return window.self !== window.top
-    },
     countries_data () {
       return this.data_type == 'count' ? this.countries_count : this.countries_density
     },
@@ -25,6 +22,7 @@ export default {
     }
   },
   created () {
+    this.level = 1
     if (this.isInsideFrame) this.render = true
     // this.render = true
   },

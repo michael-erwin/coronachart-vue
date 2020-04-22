@@ -15,9 +15,6 @@ import TotalWidget1 from '@/components/TotalWidget1'
 export default {
   components: { TotalWidget1 },
   computed: {
-    isInsideFrame () {
-      return window.self !== window.top
-    },
     summary_data () {
       return this.country_code == 'all' ? this.world_summary : this.country_summary
     },

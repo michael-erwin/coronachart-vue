@@ -11,9 +11,6 @@ import TotalBarChart1 from '@/components/TotalBarChart1'
 export default {
   components: { TotalBarChart1 },
   computed: {
-    isInsideFrame () {
-      return window.self !== window.top
-    },
     countries_data () {
       return this.data_type == 'count' ? this.countries_count : this.countries_density
     },

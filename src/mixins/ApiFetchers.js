@@ -1,6 +1,22 @@
 export default {
+  computed: {
+    isInsideFrame () {
+      return window.self !== window.top
+    },
+    origin () {
+      const re_domain = /^(?:http|https):\/\/([a-z0-9\.\-]+)(?:\/.*)?/
+      if (window.self !== window.top) {
+        try {
+          return document.referrer.match(re_domain)[1]
+        } catch(e){ return 'unknown' }
+      } else {
+        return 'self'
+      }
+    }
+  },
   data () {
     return {
+      level: 0,
       domain: process.env.VUE_APP_URL,
       // v2/covid-stats/world
       world_summary: {},
@@ -22,7 +38,7 @@ export default {
   methods: {
     fetchCountryStats (country_code='us', type='advanced') {
       this.country_summary_loading = true
-      const params = { type }
+      const params = { type, origin: this.origin, level: this.level }
       this.$axios.get(`${this.domain}/v2/covid-stats/countries/${country_code}`, { params })
       .then((response) => {
         this.country_summary = response.data
@@ -33,7 +49,7 @@ export default {
     fetchCountriesStats (type='count') {
       const data_placeholder = `countries_${type}`
       const loading_ref = `countries_${type}_loading`
-      const params = { type }
+      const params = { type, origin: this.origin, level: this.level }
       this[loading_ref] = true
       this.$axios.get(`${this.domain}/v2/covid-stats/countries`, { params })
       .then((response) => {
@@ -44,7 +60,7 @@ export default {
     },
     fetchWorldStats (type='advanced') {
       this.world_summary_loading = true
-      const params = { type }
+      const params = { type, origin: this.origin, level: this.level }
       this.$axios.get(`${this.domain}/v2/covid-stats/world`, { params })
       .then((response) => {
         this.world_summary = response.data

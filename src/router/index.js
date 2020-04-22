@@ -5,6 +5,7 @@ import VueRouter from 'vue-router'
 import NotFound from '@/views/NotFound.vue'
 import Index from '@/views/Index.vue'
 import Catalogue from '@/views/Catalogue.vue'
+import ChartForbidden from '@/views/ChartForbidden.vue'
 
 // Embed Contents.
 import EmbedSummaryWidget1 from '@/views/embeds/SummaryWidget1.vue'
@@ -24,6 +25,10 @@ const routes = [
   {
     path: '/',
     component: Index,
+  },
+  {
+    path: '/chart-forbidden',
+    component: ChartForbidden,
   },
   {
     path: '/catalogue',
