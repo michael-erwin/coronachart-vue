@@ -8,10 +8,10 @@ import Catalogue from '@/views/Catalogue.vue'
 import ChartForbidden from '@/views/ChartForbidden.vue'
 
 // Embed Contents.
-import EmbedSummaryWidget1 from '@/views/embeds/SummaryWidget1.vue'
-import EmbedSummaryChart1 from '@/views/embeds/SummaryChart1.vue'
-import EmbedSummaryChart2 from '@/views/embeds/SummaryChart2.vue'
-import EmbedSummaryChart3 from '@/views/embeds/SummaryChart3.vue'
+import EmbedSummaryWidget1 from '@/views/embeds/EmbedSummaryWidget1.vue'
+import EmbedSummaryChart1 from '@/views/embeds/EmbedSummaryChart1.vue'
+import EmbedSummaryChart2 from '@/views/embeds/EmbedSummaryChart2.vue'
+import EmbedSummaryChart3 from '@/views/embeds/EmbedSummaryChart3.vue'
 
 // Catalog Contents.
 import CatalogueSummaryWidgetsPage from '@/views/catalogue-contents/SummaryWidgetsPage.vue'

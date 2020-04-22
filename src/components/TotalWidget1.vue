@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <v-row>
+    <v-row style="position:relative">
       <v-col cols="12" sm="6" md="3">
         <v-card class="single-stat">
           <v-card class="card-icon" color="info">
@@ -57,13 +57,16 @@
           </div>
         </v-card>
       </v-col>
+      <ErrorOverlay :show="forbidden" />
     </v-row>
   </v-container>
 </template>
 
 <script>
 import Formatters from '@/mixins/Formatters'
+import ErrorOverlay from '@/components/fragments/ErrorOverlay'
 export default {
+  components: { ErrorOverlay },
   data () {
     return {
       confirmed: 0,
@@ -91,6 +94,7 @@ export default {
     loading: { type: Boolean, default: false },
     data: Object,
     timespan: { type: String, default: 'cummulative' },
+    forbidden: { type: Boolean, default: false },
   },
   watch: {
     data (data) {

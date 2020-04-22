@@ -4,6 +4,7 @@
       :loading="world_summary_loading||country_summary_loading"
       :data="summary_data"
       :timespan="timespan"
+      :forbidden="world_summary_forbidden"
     />
   </v-app>
 </template>
@@ -11,6 +12,7 @@
 <script>
 import ApiFetchers from '@/mixins/ApiFetchers'
 import QueryString from '@/mixins/QueryString'
+import FrameResize from '@/mixins/FrameResize'
 import TotalWidget1 from '@/components/TotalWidget1'
 export default {
   components: { TotalWidget1 },
@@ -31,20 +33,13 @@ export default {
       timespan: 'cummulative'
     }
   },
-  methods: {
-    resize () {
-      const v = this.$refs.app.$el.offsetHeight
-      const data = { t: 'r', v }
-      parent.postMessage(data, '*')
-    }
-  },
-  mixins: [ QueryString, ApiFetchers ],
+  mixins: [ QueryString, FrameResize, ApiFetchers ],
   mounted () {
     const wrap1 = document.querySelector('.v-application')
     const wrap2 = document.querySelector('.v-application--wrap')
     if (wrap1 && wrap2) {
-      wrap1.setAttribute('style', 'background-color: transparent !important')
-      wrap2.setAttribute('style', 'background-color: transparent !important')
+      wrap1.setAttribute('style', 'background-color:transparent !important')
+      wrap2.setAttribute('style', 'background-color:transparent !important; min-height:auto!important')
       this.resize()
       const { timespan, country_code } = this.query
       if (timespan && timespan == 'new') this.timespan = 'new'

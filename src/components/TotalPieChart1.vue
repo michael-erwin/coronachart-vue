@@ -1,5 +1,5 @@
 <template>
-  <v-card class="switch-chart">
+  <v-card class="switch-chart" style="position:relative">
     <v-toolbar dense elevation="0">
       <v-toolbar-title class="mt-1">{{title}}</v-toolbar-title>
       <v-spacer />
@@ -19,13 +19,16 @@
         <apexchart v-if="render" height="100%" type="pie" :options="options" :series="chart_data" />
       </div>
     </div>
+    <ErrorOverlay :show="forbidden" />
   </v-card>
 </template>
 
 <script>
 import truncate from 'truncate'
+import ErrorOverlay from '@/components/fragments/ErrorOverlay'
 import Formatters from '@/mixins/Formatters'
 export default {
+  components: { ErrorOverlay },
   computed: {
     chart_data() {
       return this.series[this.data_type]
@@ -173,6 +176,7 @@ export default {
     size: { type: [Number, String], default: 7 },
     data: { type: Object, default: ()=>{} },
     type: { type: String, default: 'count' },
+    forbidden: { type: Boolean, default: false },
   },
   watch: {
     data() {

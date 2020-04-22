@@ -17,14 +17,14 @@ export default {
       const id = 'fr_' + Math.random().toString(16).substr(2, 5)
       const url = window.location.origin
       return `<div style="margin:auto;max-width:${width}">
-<iframe src="${url}\/embeds\/${path}"
+<iframe src="${url}\/embeds\/${path}&id=${id}"
   id="${id}" allowtransparency="true" frameborder="0" width="100%" 
 ><\/iframe>
 <script>
   (function(){
-    var f = document.getElementById('${id}');
+    var i='${id}';var f=document.getElementById(i);
     window.addEventListener('message', function(m){
-      try {var d=m.data;if(d.t==='r') f.height=d.v+'px'}catch(e){}
+      try {var d=m.data;if(d.i===i) f.height=d.v+'px'}catch(e){}
   }, false);}())
 <\/script>
 <\/div>`;
