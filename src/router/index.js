@@ -12,6 +12,8 @@ import EmbedSummaryWidget1 from '@/views/embeds/EmbedSummaryWidget1.vue'
 import EmbedSummaryChart1 from '@/views/embeds/EmbedSummaryChart1.vue'
 import EmbedSummaryChart2 from '@/views/embeds/EmbedSummaryChart2.vue'
 import EmbedSummaryChart3 from '@/views/embeds/EmbedSummaryChart3.vue'
+import EmbedDataTable1 from '@/views/embeds/EmbedDataTable1.vue'
+import EmbedDataTable2 from '@/views/embeds/EmbedDataTable2.vue'
 
 // Catalog Contents.
 import CatalogueSummaryWidgetsPage from '@/views/catalogue-contents/SummaryWidgetsPage.vue'
@@ -55,6 +57,14 @@ const routes = [
   {
     path: '/embeds/summary-chart-3',
     component: EmbedSummaryChart3,
+  },
+  {
+    path: '/embeds/data-table-1',
+    component: EmbedDataTable1,
+  },
+  {
+    path: '/embeds/data-table-2',
+    component: EmbedDataTable2,
   },
   {
     path: '*',

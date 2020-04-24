@@ -34,10 +34,16 @@ export default {
       countries_count: {}, 
       countries_count_loading: false,
       countries_count_forbidden: false,
+
       // v2/covid-stats/countries?type=density
       countries_density: {}, 
       countries_density_loading: false,
       countries_density_forbidden: false,
+
+      // v2/covid-stats/countries?type=advanced
+      countries_advanced: {}, 
+      countries_advanced_loading: false,
+      countries_advanced_forbidden: false,
     }
   },
   methods: {
@@ -62,10 +68,14 @@ export default {
       const data_placeholder = `countries_${type}`
       const loading_ref = `countries_${type}_loading`
       const params = { type, origin: this.origin, level: this.level }
+      let output = false
       this[loading_ref] = true
       this.$axios.get(`/v2/covid-stats/countries`, { params })
       .then((r) => {
-        if (r) this[data_placeholder] = r.data
+        if (r) {
+          this[data_placeholder] = r.data
+          output = r.data
+        }
       })
       .catch((e) => {
         if (e.response) {
@@ -75,14 +85,19 @@ export default {
       })
       .finally(() => {
         this[loading_ref] = false
+        return output
       })
     },
     fetchWorldStats (type='advanced') {
       this.world_summary_loading = true
+      let output = false
       const params = { type, origin: this.origin, level: this.level }
       this.$axios.get(`/v2/covid-stats/world`, { params })
       .then((r) => {
-        if (r) this.world_summary = r.data
+        if (r) {
+          this.world_summary = r.data
+          output = r.data
+        }
       })
       .catch((e) => {
         if (e.response) {
@@ -92,6 +107,7 @@ export default {
       })
       .finally(() => {
         this.world_summary_loading = false
+        return output
       })
     },
   }

@@ -1,8 +1,8 @@
 export default {
   methods: {
-    resize () {
+    resize (height) {
       const i = this.query.id
-      const v = this.$refs.app.$el.clientHeight
+      const v = Number.isInteger(height) ? height : this.$refs.app.$el.offsetHeight
       const data = { i , v }
       parent.postMessage(data, '*')
     }

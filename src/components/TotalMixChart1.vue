@@ -17,8 +17,8 @@
     <div class="pb-3">
       <div class="d-flex justify-center pt-2">
         <v-btn-toggle v-model="chart_index" @change="refresh" dense mandatory>
-          <v-btn small>Bar</v-btn>
-          <v-btn small>Pie</v-btn>
+          <v-btn small width="100">Bar</v-btn>
+          <v-btn small width="100">Pie</v-btn>
         </v-btn-toggle>
       </div>
       <div class="chart-box">

@@ -197,7 +197,7 @@
     <v-dialog v-model="mixchart1_show_settings" overlay-color="rgba(255,255,255,0)" max-width="600" persistent>
       <v-card>
         <v-toolbar dense dark elevation="0" color="grey darken-3">
-          <v-toolbar-title>Bar Chart Settings</v-toolbar-title>
+          <v-toolbar-title>Switching Bar-Pie Settings</v-toolbar-title>
           <v-spacer />
           <v-btn icon dark @click="mixchart1_show_settings=false">
             <v-icon>mdi-close</v-icon>

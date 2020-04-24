@@ -103,3 +103,14 @@
   white-space: nowrap;
 }
 </style>
+
+<style lang="scss">
+.embed-data-table {
+  .v-data-footer {
+    min-height: 48px;
+  }
+  .flag-icon {
+    vertical-align: middle;
+  }
+}
+</style>
