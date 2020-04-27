@@ -4,7 +4,7 @@
     <v-row>
       <v-col>
         <div class="d-flex px-2">
-          <p class="title mb-0">Summary Widget 1 - {{widget1_country}}</p>
+          <p class="title mb-0">Summary Widget - {{widget1_country}}</p>
           <v-spacer />
           <fab-small title="Get embed code" @click="widget1_code_show=true" />
           <fab-small title="Configure Widget" @click="widget1_settings_show=true"
@@ -22,14 +22,14 @@
     <v-dialog v-model="widget1_settings_show" overlay-color="rgba(255,255,255,0)" max-width="600" persistent>
       <v-card>
         <v-toolbar dense dark elevation="0" color="grey darken-3">
-          <v-toolbar-title>Summary Widget 1 Settings</v-toolbar-title>
+          <v-toolbar-title>Settings - Summary Widget</v-toolbar-title>
           <v-spacer />
           <v-btn icon dark @click="widget1_settings_show=false">
             <v-icon>mdi-close</v-icon>
           </v-btn>
         </v-toolbar>
         <v-container class="px-4 pb-1">
-          <v-row no-gutters>
+          <v-row>
             <v-col cols="12" sm="6">
               <p class="mb-1">Geographic Coverage</p>
               <v-radio-group class="mt-0 mb-3" v-model="widget1_settings.geo" hide-details row
@@ -47,7 +47,6 @@
                 item-value="country_code"
                 :filter="countryFilter"
                 cache-items
-                class="mr-2"
                 flat
                 dense
                 hide-no-data
@@ -75,7 +74,7 @@
       </v-card>
     </v-dialog>
     <!-- Embed Dialog -->
-    <embed-code-dialog :show.sync="widget1_code_show" :value="widget1_code">
+    <embed-code-dialog :show.sync="widget1_code_show" title="Embed Code - Summary Widget" :value="widget1_code">
       <template v-slot:bottom>
         <div class="d-flex align-center mt-4">
           <div class="mr-2 mt-1">Width:</div>

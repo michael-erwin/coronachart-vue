@@ -57,7 +57,7 @@
     <v-dialog v-model="barchart1_show_settings" overlay-color="rgba(255,255,255,0)" max-width="600" persistent>
       <v-card>
         <v-toolbar dense dark elevation="0" color="grey darken-3">
-          <v-toolbar-title>Bar Chart Settings</v-toolbar-title>
+          <v-toolbar-title>Settings - Bar Chart</v-toolbar-title>
           <v-spacer />
           <v-btn icon dark @click="barchart1_show_settings=false">
             <v-icon>mdi-close</v-icon>
@@ -88,7 +88,7 @@
       </v-card>
     </v-dialog>
     <!-- Bar Chart Embed Dialog -->
-    <EmbedCodeDialog :value="barchart1_code" title="Bar Chart Embed Code" :show.sync="barchart1_show_code">
+    <EmbedCodeDialog :value="barchart1_code" title="Embed Code - Bar Chart" :show.sync="barchart1_show_code">
       <template v-slot:bottom>
         <div class="d-flex align-center mt-4">
           <div class="mr-2 mt-1">Width:</div>
@@ -127,7 +127,7 @@
     <v-dialog v-model="piechart1_show_settings" overlay-color="rgba(255,255,255,0)" max-width="600" persistent>
       <v-card>
         <v-toolbar dense dark elevation="0" color="grey darken-3">
-          <v-toolbar-title>Pie Chart Settings</v-toolbar-title>
+          <v-toolbar-title>Settings - Pie Chart</v-toolbar-title>
           <v-spacer />
           <v-btn icon dark @click="piechart1_show_settings=false">
             <v-icon>mdi-close</v-icon>
@@ -158,7 +158,7 @@
       </v-card>
     </v-dialog>
     <!-- Pie Chart Embed Dialog -->
-    <EmbedCodeDialog :value="piechart1_code" title="Pie Chart Embed Code" :show.sync="piechart1_show_code">
+    <EmbedCodeDialog :value="piechart1_code" title="Embed Code - Pie Chart" :show.sync="piechart1_show_code">
       <template v-slot:bottom>
         <div class="d-flex align-center mt-4">
           <div class="mr-2 mt-1">Width:</div>
@@ -197,7 +197,7 @@
     <v-dialog v-model="mixchart1_show_settings" overlay-color="rgba(255,255,255,0)" max-width="600" persistent>
       <v-card>
         <v-toolbar dense dark elevation="0" color="grey darken-3">
-          <v-toolbar-title>Switching Bar-Pie Settings</v-toolbar-title>
+          <v-toolbar-title>Settings - Switching Bar-Pie</v-toolbar-title>
           <v-spacer />
           <v-btn icon dark @click="mixchart1_show_settings=false">
             <v-icon>mdi-close</v-icon>
@@ -228,7 +228,7 @@
       </v-card>
     </v-dialog>
     <!-- Switching Bar-Pie Chart Embed Dialog -->
-    <EmbedCodeDialog :value="mixchart1_code" :show.sync="mixchart1_show_code">
+    <EmbedCodeDialog :value="mixchart1_code" :show.sync="mixchart1_show_code" title="Embed Code - Switching Bar-Pie">
       <template v-slot:bottom>
         <div class="d-flex align-center mt-4">
           <div class="mr-2 mt-1">Width:</div>

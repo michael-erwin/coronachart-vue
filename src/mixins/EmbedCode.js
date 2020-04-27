@@ -16,7 +16,8 @@ export default {
     getEmbedText (path, width='auto') {
       const id = 'fr_' + Math.random().toString(16).substr(2, 5)
       const url = window.location.origin
-      return `<div style="margin:auto;max-width:${width}">
+      const maxw = width === 'auto' ? '' : `;max-width:${width}`
+      return `<div style="margin:auto${maxw}">
 <iframe src="${url}\/embeds\/${path}&id=${id}"
   id="${id}" allowtransparency="true" frameborder="0" width="100%" 
 ><\/iframe>

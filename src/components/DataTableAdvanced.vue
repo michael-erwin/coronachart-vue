@@ -97,7 +97,7 @@
         </tbody>
       </template>
     </v-data-table>
-    <LineChartInner
+    <LineChartOverlay
       :daily-change="line_chart.daily"
       :show.sync="line_chart.show"
       :code="line_chart.country_code"
@@ -115,9 +115,9 @@
 import Formatters from '@/mixins/Formatters'
 import ErrorOverlay from '@/components/fragments/ErrorOverlay'
 
-import LineChartInner from '@/components/LineChartInner'
+import LineChartOverlay from '@/components/LineChartOverlay'
 export default {
-  components: { ErrorOverlay, LineChartInner },
+  components: { ErrorOverlay, LineChartOverlay },
   computed: {
     computedHeaders () {
       return [
