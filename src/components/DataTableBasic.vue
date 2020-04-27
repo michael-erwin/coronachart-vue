@@ -25,6 +25,8 @@
       :loading="loading"
       :footer-props="footer_props"
       :height="computedHeight"
+      sort-by="confirmed"
+      :sort-desc="true"
     >
       <template v-slot:body="{items}">
         <tbody>
@@ -60,11 +62,11 @@ export default {
   data () {
     return {
       headers: [
-        { text: 'Country', value: 'country_name', sortable: false },
-        { text: 'Confirmed', value: 'confirmed', sortable: false },
-        { text: 'Deaths', value: 'deaths', sortable: false },
-        { text: 'Recovered', value: 'recovered', sortable: false },
-        { text: 'Active', value: 'active', sortable: false },
+        { text: 'Country', value: 'country_name', sortable: true },
+        { text: 'Confirmed', value: 'confirmed', sortable: true },
+        { text: 'Deaths', value: 'deaths', sortable: true },
+        { text: 'Recovered', value: 'recovered', sortable: true },
+        { text: 'Active', value: 'active', sortable: true },
         // { text: 'Population', value: 'population' },
         // { text: 'Actions', value: 'action', sortable: false },
       ],
