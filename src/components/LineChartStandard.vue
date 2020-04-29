@@ -14,15 +14,14 @@
           :filter="countryFilter"
           cache-items outlined
           flat dense solo
-          hide-no-data
-          hide-details
+          hide-no-data hide-details
           label="Select your country"
           @change="changeCountry"
         />
       </div>
     </v-toolbar>
     <div class="chart-container" style="overflow:hidden">
-      <apexchart type="line" :options="chartOptions" :series="series"></apexchart>
+      <apexchart type="line" :options="chartOptions" :series="series" :height="computedHeight"></apexchart>
       <div class="d-flex justify-center control">
         <v-btn-toggle v-model="dailyChange" dense mandatory @change="changedDaily">
           <v-btn small :value="false" width="120" title="Daily accumulated count">Cummulative</v-btn>
@@ -43,6 +42,11 @@
 import ErrorOverlay from '@/components/fragments/ErrorOverlay'
 export default {
   components: { ErrorOverlay },
+  computed: {
+    computedHeight () {
+      return (this.height - 63)
+    }
+  },
   created () {
     this.country_code = this.defaultCode
     console.log('lineChartStandard: ', this.country_code)
@@ -89,7 +93,6 @@ export default {
       this.fetchCountryStats()
     },
     fetchCountryStats () {
-      console.log('fetchCountryStats triggered')
       this.series = []
       this.loading = true
       const params = { origin: this.origin, level: this.level, span: this.span }
@@ -162,6 +165,7 @@ export default {
   },
   props: {
     defaultCode: { type: String, default: 'W1' },
+    height: { type: String|Number, default: '540' },
     level: { type: String|Number, default: '0' },
     origin: { type: String, default: 'self' },
     span: { type: String, default: 'past' },

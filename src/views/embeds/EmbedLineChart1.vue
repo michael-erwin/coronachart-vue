@@ -1,6 +1,6 @@
 <template>
   <v-app ref="app" v-if="render" v-resize="resize">
-    <LineChartBasic :code="code" :title="title" :daily-change="daily_change" />
+    <LineChartBasic :code="code" :title="title" :daily-change="daily_change" :height="height" />
   </v-app>
 </template>
 
@@ -17,6 +17,10 @@ export default {
     },
     daily_change () {
       return this.query['daily'] === 'true' ? true : false
+    },
+    height () {
+      let input_height = parseInt(this.query['height'])
+      return input_height > 299 ? input_height : 540
     },
     title () {
       return this.query.title || `Timeline Series`

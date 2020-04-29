@@ -5,7 +5,7 @@
       <v-spacer />
     </v-toolbar>
     <div class="chart-container" style="overflow:hidden">
-      <apexchart type="line" :options="chartOptions" :series="series"></apexchart>
+      <apexchart type="line" :options="chartOptions" :series="series" :height="computedHeight"></apexchart>
       <v-overlay :value="loading||inputLoading" color="rgba(255,255,255, 0.5)" absolute>
         <v-progress-circular indeterminate color="primary" />
       </v-overlay>
@@ -15,12 +15,17 @@
 
 <script>
 export default {
+  computed: {
+    computedHeight () {
+      return (this.height - 63)
+    }
+  },
   data () {
     return {
       chartOptions: {
         chart: {
           id: 'lin_chart',
-          toolbar: { tools: { download: false } }
+          toolbar: { tools: { download: false } },
         },
         colors: ['#00B0FF', '#FF1744', '#00E676', '#FF9100'],
         stroke: { width: 2 },
@@ -104,6 +109,7 @@ export default {
   },
   props: {
     code : String,
+    height: { type: String|Number, default: '540' },
     level: { type: String|Number, default: '0' },
     inputData: Object,
     inputLoading: { type: Boolean, default: false },

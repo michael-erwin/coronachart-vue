@@ -1,6 +1,6 @@
 <template>
   <v-app ref="app" v-if="render" v-resize="resize">
-    <LineChartStandard :default-code="code" :title="title" :level="level" :origin="origin" />
+    <LineChartStandard :default-code="code" :title="title" :level="level" :origin="origin" :height="height" />
   </v-app>
 </template>
 
@@ -14,6 +14,10 @@ export default {
   computed: {
     code () {
       return this.query.code || 'W1'
+    },
+    height () {
+      let input_height = parseInt(this.query['height'])
+      return input_height > 299 ? input_height : 540
     },
     title () {
       return this.query.title || `Timeline Series`

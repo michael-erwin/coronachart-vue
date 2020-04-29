@@ -59,6 +59,26 @@
             <div></div>
           </div>
         </div>
+        <div class="d-flex align-center mt-4">
+          <div class="mr-2 mt-1">Height:</div>
+          <div style="min-width:200px">
+            <v-radio-group hide-details row value="fixed" class="mt-0 d-inline-block">
+              <v-radio label="Auto" value="auto" disabled></v-radio>
+              <v-radio label="Fixed" value="fixed"></v-radio>
+            </v-radio-group>
+          </div>
+          <div class="d-flex" v-if="linechart1_settings.height_type=='fixed'">
+            <div style="flex-basis:100px!important">
+              <v-text-field dense outlined flat hide-details
+                v-model="linechart1_settings.height"
+                type="number" min="300" class="mr-1"
+              />
+            </div>
+            <div style="flex-basis:50px!important">
+              <v-select outlined dense hide-details value="px" :items="['px']"></v-select>
+            </div>
+          </div>
+        </div>
       </template>
       <template v-slot:actions>
         <v-spacer />
@@ -145,6 +165,26 @@
               ></v-select>
             </div>
             <div></div>
+          </div>
+        </div>
+        <div class="d-flex align-center mt-4">
+          <div class="mr-2 mt-1">Height:</div>
+          <div style="min-width:200px">
+            <v-radio-group hide-details row value="fixed" class="mt-0 d-inline-block">
+              <v-radio label="Auto" value="auto" disabled></v-radio>
+              <v-radio label="Fixed" value="fixed"></v-radio>
+            </v-radio-group>
+          </div>
+          <div class="d-flex" v-if="linechart2_settings.height_type=='fixed'">
+            <div style="flex-basis:100px!important">
+              <v-text-field dense outlined flat hide-details
+                v-model="linechart2_settings.height"
+                type="number" min="300" class="mr-1"
+              />
+            </div>
+            <div style="flex-basis:50px!important">
+              <v-select outlined dense hide-details value="px" :items="['px']"></v-select>
+            </div>
           </div>
         </div>
       </template>
@@ -251,7 +291,8 @@ export default {
         width_type: 'auto',
         width_unit: 'px',
         max_width: 'auto',
-        height: '550px'
+        height: '540',
+        height_type: 'fixed',
       },
       linechart2_code_show: false,
       linechart2_settings_show: false,
@@ -261,7 +302,8 @@ export default {
         width_type: 'auto',
         width_unit: 'px',
         max_width: 'auto',
-        height: '550px'
+        height: '540',
+        height_type: 'fixed',
       }
     }
   },
