@@ -317,7 +317,7 @@ export default {
     fetchAffectedCountries () {
       this.country_loading = true
       const params = { origin: 'self', level: '0' }
-      this.$axios.get(`/v2/covid-stats/affected-countries`, { params })
+      this.$axios.get(`/v1.0/covid-stats/affected-countries`, { params })
       .then(({data}) => {
         let list = [{ country_code: 'W1', country_name: 'All (World Total)'}, ...data]
         this.country_list = list
