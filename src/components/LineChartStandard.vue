@@ -102,7 +102,7 @@ export default {
         endpoint = 'world'
         params.type = 'series'
       }
-      this.$axios.get(`/v2/covid-stats/${endpoint}`, { params })
+      this.$axios.get(`/v1.0/covid-stats/${endpoint}`, { params })
       .then(({ data }) => { this.data = data; this.structureData(data, this.type, this.dailyChange) })
       .catch((e) => { 
         if (e.response) {
@@ -115,7 +115,7 @@ export default {
     fetchAffectedCountries () {
       this.country_loading = true
       const params = { origin: this.origin, level: this.level, span: this.span }
-      this.$axios.get(`/v2/covid-stats/affected-countries`, { params })
+      this.$axios.get(`/v1.0/covid-stats/affected-countries`, { params })
       .then(({data}) => {
         let list = [...this.country_list, ...data]
         this.country_list = list

@@ -9,9 +9,9 @@
       <v-toolbar dense elevation="1" color="grey darken-3" dark>
         <v-toolbar-title>{{titleData}} - {{country}}</v-toolbar-title>
         <v-spacer />
-        <v-btn icon @click="toggleScreen" :disabled="loading">
+        <!-- <v-btn icon @click="toggleScreen" :disabled="loading">
           <v-icon>{{screenIcon}}</v-icon>
-        </v-btn>
+        </v-btn> -->
         <v-btn icon @click="close">
           <v-icon>mdi-close</v-icon>
         </v-btn>
@@ -67,7 +67,7 @@ export default {
       this.loading = true
       const params = { origin: this.origin, level: this.level, span: this.span }
       // Fetch
-      this.$axios.get(`/v2/covid-stats/countries/${this.code}`, { params })
+      this.$axios.get(`/v1.0/covid-stats/countries/${this.code}`, { params })
       .then(({ data }) => { this.structureData(data, this.type, this.dailyChange) })
       .catch((e) => { console.error(e) })
       .finally(() => { this.loading = false })

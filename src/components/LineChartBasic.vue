@@ -52,7 +52,7 @@ export default {
         endpoint = 'world'
         params.type = 'series'
       }
-      this.$axios.get(`/v2/covid-stats/${endpoint}`, { params })
+      this.$axios.get(`/v1.0/covid-stats/${endpoint}`, { params })
       .then(({ data }) => { this.data = data; this.structureData(data, this.type, this.dailyChange) })
       .catch((e) => { console.error(e) })
       .finally(() => { this.loading = false })

@@ -166,7 +166,7 @@ export default {
     fetchLineData (country_code) {
       this.line_chart.loading = true
       const params = { origin: 'self', level: '0', span: 'past' }
-      this.$axios.get(`/v2/covid-stats/countries/${country_code}`, { params })
+      this.$axios.get(`/v1.0/covid-stats/countries/${country_code}`, { params })
       .then(({ data }) => { this.line_chart.data = data })
       .catch((e) => { console.error(e) })
       .finally(() => { this.line_chart.loading = false })
