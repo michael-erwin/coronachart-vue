@@ -49,7 +49,6 @@ export default {
   },
   created () {
     this.country_code = this.defaultCode
-    console.log('lineChartStandard: ', this.country_code)
   },
   data () {
     return {

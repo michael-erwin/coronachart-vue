@@ -28,10 +28,10 @@ export default {
     try {
       const self = location.host === top.location.host
       if (self) this.level = 0
-      else this.level = 1
+      else this.level = 2
     } catch (e) {
       console.log('Something went wrong')
-      this.level = 1
+      this.level = 2
     }
     
     if (this.isInsideFrame) this.render = true

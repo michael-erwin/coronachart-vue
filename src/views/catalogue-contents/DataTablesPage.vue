@@ -3,7 +3,11 @@
     <v-row class="px-2">
       <v-col cols="12">
         <div class="d-flex mb-2">
-          <p class="title mb-0">Data Table Basic</p>
+          <p class="title mb-0">Data Table
+            <v-chip label x-small color="primary" text-color="white">
+              standard
+            </v-chip>
+          </p>
           <v-spacer />
           <fab-small @click="datatable1_show_code=true" />
           <fab-small @click="datatable1_show_settings=true" icon="mdi-cog-outline" class="ml-1" />
@@ -16,7 +20,11 @@
       </v-col>
       <v-col cols="12">
         <div class="d-flex mb-2">
-          <p class="title mb-0">Data Table Standard</p>
+          <p class="title mb-0">Data Table
+            <v-chip label x-small color="amber darken-4" text-color="white">
+              agency
+            </v-chip>
+          </p>
           <v-spacer />
           <fab-small @click="datatable2_show_code=true" />
           <fab-small @click="datatable2_show_settings=true" icon="mdi-cog-outline" class="ml-1" />

@@ -4,7 +4,11 @@
     <v-row>
       <v-col>
         <div class="d-flex px-2">
-          <p class="title mb-0">Summary Widget - {{widget1_country}}</p>
+          <p class="title mb-0">Summary Widget - {{widget1_country}}
+            <v-chip label x-small color="green accent-4" text-color="white">
+              free
+            </v-chip>
+          </p>
           <v-spacer />
           <fab-small title="Get embed code" @click="widget1_code_show=true" />
           <fab-small title="Configure Widget" @click="widget1_settings_show=true"

@@ -1,6 +1,13 @@
 <template>
   <v-app ref="app" v-if="render" v-resize="resize">
-    <LineChartBasic :code="code" :title="title" :daily-change="daily_change" :height="height" />
+    <LineChartBasic
+      :code="code"
+      :level="level"
+      :origin="origin"
+      :title="title"
+      :daily-change="daily_change"
+      :height="height"
+    />
   </v-app>
 </template>
 

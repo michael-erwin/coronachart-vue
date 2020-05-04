@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card style="position:relative">
     <v-toolbar dense elevation="0">
       <v-toolbar-title>{{title}}</v-toolbar-title>
       <v-spacer />
@@ -10,11 +10,14 @@
         <v-progress-circular indeterminate color="primary" />
       </v-overlay>
     </div>
+    <ErrorOverlay :show="forbidden" style="z-index: 999" />
   </v-card>
 </template>
 
 <script>
+import ErrorOverlay from '@/components/fragments/ErrorOverlay'
 export default {
+  components: { ErrorOverlay },
   computed: {
     computedHeight () {
       return (this.height - 63)
@@ -37,6 +40,7 @@ export default {
       },
       data: null,
       series: [],
+      forbidden: false,
       fullscreen: false,
       loading: false,
     }
@@ -54,7 +58,12 @@ export default {
       }
       this.$axios.get(`/v1.0/covid-stats/${endpoint}`, { params })
       .then(({ data }) => { this.data = data; this.structureData(data, this.type, this.dailyChange) })
-      .catch((e) => { console.error(e) })
+      .catch((e) => { 
+        if (e.response) {
+          const { status, headers, data} = e.response
+          if (status === 401) this.forbidden = true
+        }
+       })
       .finally(() => { this.loading = false })
     },
     structureData (data, type, dailyChange) {

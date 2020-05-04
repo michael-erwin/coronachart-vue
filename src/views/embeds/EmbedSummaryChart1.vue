@@ -25,6 +25,13 @@ export default {
     }
   },
   created () {
+    try {
+      const self = location.host === top.location.host
+      if (self) this.level = 0
+      else this.level = 1
+    } catch (e) {
+      this.level = 1
+    }
     if (this.isInsideFrame) this.render = true
     // this.render = true
   },
