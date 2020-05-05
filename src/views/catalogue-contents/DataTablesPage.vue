@@ -4,8 +4,8 @@
       <v-col cols="12">
         <div class="d-flex mb-2">
           <p class="title mb-0">Data Table
-            <v-chip label x-small color="primary" text-color="white">
-              standard
+            <v-chip label x-small color="indigo" text-color="white">
+              standard+
             </v-chip>
           </p>
           <v-spacer />

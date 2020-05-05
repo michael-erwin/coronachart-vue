@@ -90,6 +90,8 @@
       sources: [
         { text: 'JHU CSSE', link: 'https://systems.jhu.edu/research/public-health/ncov/' },
         { text: 'TrackCorona', link: 'https://www.trackcorona.live/' },
+        { text: 'Wikipedia', link: 'https://en.wikipedia.org/wiki/COVID-19_pandemic_by_country_and_territory/' },
+        { text: 'Worldometer', link: 'https://www.worldometers.info/coronavirus/' },
       ]
     }),
   }
