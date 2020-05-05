@@ -57,7 +57,7 @@
           </div>
         </v-card>
       </v-col>
-      <ErrorOverlay :show="forbidden" />
+      <ErrorOverlay :title="forbiddenTitle" :show="forbidden" />
     </v-row>
   </v-container>
 </template>
@@ -74,7 +74,7 @@ export default {
       recovered: 0,
       active: 0,
       titles: {
-        cummulative: {
+        cumulative: {
           confirmed: 'Total Confirmed',
           deaths: 'Total Deaths',
           recovered: 'Total Recovered',
@@ -93,8 +93,9 @@ export default {
   props: {
     loading: { type: Boolean, default: false },
     data: Object,
-    timespan: { type: String, default: 'cummulative' },
+    timespan: { type: String, default: 'cumulative' },
     forbidden: { type: Boolean, default: false },
+    forbiddenTitle: { type: Boolean|String, default: false }
   },
   watch: {
     data (data) {

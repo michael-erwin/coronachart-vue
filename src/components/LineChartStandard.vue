@@ -24,7 +24,7 @@
       <apexchart type="line" :options="chartOptions" :series="series" :height="computedHeight"></apexchart>
       <div class="d-flex justify-center control">
         <v-btn-toggle v-model="dailyChange" dense mandatory @change="changedDaily">
-          <v-btn small :value="false" width="120" title="Daily accumulated count">Cummulative</v-btn>
+          <v-btn small :value="false" width="120" title="Daily accumulated count">cumulative</v-btn>
           <v-btn small :value="true" width="120" title="Daily new incidence"
             :disabled="country_code==='W1'"
           >Daily Change</v-btn>

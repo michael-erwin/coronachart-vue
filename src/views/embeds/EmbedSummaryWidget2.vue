@@ -4,8 +4,7 @@
       :loading="world_summary_loading||country_summary_loading"
       :data="summary_data"
       :timespan="timespan"
-      :forbidden="world_summary_forbidden||country_summary_forbidden||timespan=='new'"
-      :forbidden-title="timespan=='new'?'Embed type has no support for daily new cases':false"
+      :forbidden="world_summary_forbidden||country_summary_forbidden"
     />
   </v-app>
 </template>
@@ -23,6 +22,14 @@ export default {
     },
   },
   created () {
+    try {
+      const self = location.host === top.location.host
+      if (self) this.level = 0
+      else this.level = 1
+    } catch (e) {
+      console.log('Something went wrong')
+      this.level = 1
+    }
     if (this.isInsideFrame) this.render = true
     // this.render = true
   },
@@ -41,25 +48,21 @@ export default {
     if (wrap1 && wrap2) {
       wrap1.setAttribute('style', 'background-color:transparent !important')
       wrap2.setAttribute('style', 'background-color:transparent !important; min-height:auto!important')
-      this.resize()
       const { timespan, country_code } = this.query
-
       if (timespan && timespan == 'new') this.timespan = 'new'
       else this.timespan = 'cumulative'
-
       if (country_code && country_code.length == 2) {
-        if (this.timespan !== 'new') {
-          if (this.country_code === 'W1') {
-            this.fetchWorldStats()
-          } else {
-            this.country_code = country_code
-            this.fetchCountryStats(country_code)
-          }
+        if (this.country_code == 'W1') {
+          this.fetchWorldStats()
+        } else if (this.timespan !== 'new') {
+          this.country_code = country_code
+          this.fetchCountryStats(country_code)
         }
       } else {
         this.country_code = 'W1'
         this.fetchWorldStats()
       }
+      this.resize()
     }
   },
 }

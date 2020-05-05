@@ -4,8 +4,8 @@
       <v-col cols="12" lg="6">
         <div class="d-flex mb-2">
           <p class="title mb-0">Line Chart
-            <v-chip label x-small color="primary" text-color="white">
-              standard
+            <v-chip label x-small color="green accent-4" text-color="white">
+              free
             </v-chip>
           </p>
           <v-spacer />
@@ -23,8 +23,8 @@
       <v-col cols="12" lg="6">
         <div class="d-flex mb-2">
           <p class="title mb-0">Line Chart
-            <v-chip label x-small color="amber darken-4" text-color="white">
-              agency
+            <v-chip label x-small color="primary" text-color="white">
+              standard
             </v-chip>
           </p>
           <v-spacer />
