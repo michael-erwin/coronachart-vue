@@ -35,9 +35,8 @@ export default {
   },
   data () {
     return {
-      query: {},
-      render: false,
       country_code: 'W1',
+      render: false,
       timespan: 'cumulative'
     }
   },
@@ -52,10 +51,10 @@ export default {
       if (timespan && timespan == 'new') this.timespan = 'new'
       else this.timespan = 'cumulative'
       if (country_code && country_code.length == 2) {
+        this.country_code = country_code
         if (this.country_code == 'W1') {
           this.fetchWorldStats()
-        } else if (this.timespan !== 'new') {
-          this.country_code = country_code
+        } else {
           this.fetchCountryStats(country_code)
         }
       } else {
